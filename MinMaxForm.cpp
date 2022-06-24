@@ -27,10 +27,5 @@ int main(){
     {
         cout<<temp[i]<<", ";
     }
-    
-    
-    
-
-
     return 0;
 }
