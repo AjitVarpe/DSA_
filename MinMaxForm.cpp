@@ -1,31 +1,41 @@
-#include<bits/stdc++.h>
-#include<limits>
-#include<String>
+#include <bits/stdc++.h>
+#include <limits>
+#include <String>
 using namespace std;
-
-int main(){
-    int count;
-    cout<<"Enter the Size of Array : ";
-    cin>>count;
-    int arr[count],temp[count];
-
-    cout<<"Enter the Element : ";
+void rearrenge(int arr[], int count)
+{
+    int temp[count];
+    int min = 0, max = count - 1;
+    bool flag = true;
     for (int i = 0; i < count; i++)
     {
-        cin>>arr[i];
-    }
-    int n=count;
-    for (int i = 0; i < count; i++)
-    {
-        if(i%2==0){
-            temp[i]=arr[n-1-i];
-        }else{
-            temp[i]=arr[i+1];
+        if (flag)
+        {
+            temp[i] = arr[max--];
         }
+        else
+            temp[i] = arr[min++];
+        flag = !flag;
     }
     for (int i = 0; i < count; i++)
     {
-        cout<<temp[i]<<", ";
+        arr[i] = temp[i];
     }
+}
+int main()
+{
+    int count;
+    cin >> count;
+    int arr[count];
+    for (int i = 0; i < count; i++)
+    {
+        cin >> arr[i];
+    }
+    rearrenge(arr, count);
+    for (int i = 0; i < count; i++)
+    {
+        cout << arr[i] << ", ";
+    }
+
     return 0;
 }
